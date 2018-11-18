@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<title>JavaScriptでなんとかする。</title>
+<link rel="stylesheet" href="css/base.css">
+<script src="js/lib/jquery-1.12.2.js"></script>
+<script src="js/lib/twitapi_0.2.1.js"></script>
+<script><!--
+//--></script>
+</head>
+<body>
+<form name="form">
+<input type="text" name="debug" size=1><br>
+</form>
+<form name="auth">
+<table>
+<tr><td>Consumer key:       </td><td><input type="text" name="ConsumerKey" size="25"></td></tr>
+<tr><td>Consumer secret:    </td><td><input type="text" name="ConsumerSecret" size="50"></td></tr>
+<tr><td>Access token:       </td><td><input type="text" name="AccessToken" size="50"></td></tr>
+<tr><td>Access token secret:</td><td><input type="text" name="AccessTokenSecret" size="50"></td></tr>
+<tr><td><input type="button" name="load" value="取得">
+        <input type="button" name="save" value="保存"></td>
+    <td><input type="button" name="login" value="ログイン"></td></tr>
+</table>
+</form>
+</body>
+<script><!--
+//================================================================================================================
+document.auth.load.onclick = function() {
+    DEBUG = parseInt('0'+document.form.debug.value);
+    document.auth.ConsumerKey.value       = window.localStorage.getItem('ConsumerKey');
+    document.auth.ConsumerSecret.value    = window.localStorage.getItem('ConsumerSecret');
+    document.auth.AccessToken.value       = window.localStorage.getItem('AccessToken');
+    document.auth.AccessTokenSecret.value = window.localStorage.getItem('AccessTokenSecret');
+}
+document.auth.save.onclick = function() {
+    DEBUG = parseInt('0'+document.form.debug.value);
+    window.localStorage.setItem('ConsumerKey',       document.auth.ConsumerKey.value);
+    window.localStorage.setItem('ConsumerSecret',    document.auth.ConsumerSecret.value);
+    window.localStorage.setItem('AccessToken',       document.auth.AccessToken.value);
+    window.localStorage.setItem('AccessTokenSecret', document.auth.AccessTokenSecret.value);
+}
+
+//--></script>
+</html>
